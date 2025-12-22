@@ -33,7 +33,7 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="muted">Last updated: 2025-12-22 </p>
+<p class="muted">Last updated: 2025-12-22</p>
 
 <p>
   This Privacy Policy explains how <b>Web3 AI Reply</b> (“we”, “our”, “the Extension”)
@@ -47,7 +47,7 @@
 <ul>
   <li>The Extension processes data needed to perform actions you explicitly request (e.g., generate a reply).</li>
   <li>User preferences are stored locally using <code>chrome.storage</code>.</li>
-  <li>Some requests may be sent to our backend services and AI provider(s) to deliver functionality.</li>
+  <li>When you use features like AI reply generation, requests may be sent to our backend API endpoint to deliver functionality.</li>
   <li>We do not collect your X/Twitter password, do not access your private messages (DMs), and do not sell personal data.</li>
 </ul>
 
@@ -76,7 +76,7 @@
   <li>The current page URL and the specific tweet URL you are interacting with.</li>
 </ul>
 <p class="muted">
-  We do not access your private messages (DMs) and do not read content unrelated to your requested action. 
+  We do not access your private messages (DMs) and do not read content unrelated to your requested action.
 </p>
 
 <h3>3) Local extension storage</h3>
@@ -123,30 +123,42 @@
 
 <h2>Permissions & why they are needed</h2>
 <ul>
-  <li><code>storage</code>: to store your settings locally.</li>
-  <li><code>tabs</code>: to identify the active tab URL / tweet URL you are interacting with.</li>
+  <li><code>storage</code>: to store your settings and preferences locally using <code>chrome.storage</code>.</li>
+  <li><code>tabs</code>: to read the active tab URL (e.g., the tweet/page you are interacting with) so the Extension can run your requested action on the correct X/Twitter page.</li>
   <li><code>sidePanel</code>: to display the Extension UI in the Chrome side panel.</li>
-  <li>Host permissions (e.g., <code>*.cloudfunctions.net</code>): to communicate with our backend API endpoints when needed.</li>
+  <li>
+    <b>Host permission</b>:
+    <code>https://us-central1-web3-ai-reply.cloudfunctions.net/api/*</code>
+    — to communicate with our backend API endpoint when needed.
+  </li>
 </ul>
 
 <hr />
 
 <h2>Third-party services & sharing</h2>
 <p>
-  Depending on enabled features, the Extension may communicate with the following parties
-  to deliver functionality. Data is shared only as necessary.
+  Depending on enabled features, the Extension may share limited data only as necessary to deliver functionality.
 </p>
+
 <ul>
   <li>
-    <b>Backend services (Firebase / Google Cloud Functions)</b>
-    (<code>*.cloudfunctions.net</code>, <code>*.firebaseapp.com</code>) for authentication, credits, API routing, and feature logic.
+    <b>Backend API (Google Cloud Functions)</b>:
+    <code>https://us-central1-web3-ai-reply.cloudfunctions.net/api/*</code><br />
+    We may send the tweet URL, required public tweet context, and your selected settings/prompt to this endpoint
+    to generate replies and provide features such as authentication or credits (if enabled).
   </li>
+
   <li>
-    <b>AI provider (Groq)</b> (<code>https://api.groq.com</code>) for AI text generation, either directly or via our backend.
+    <b>AI text generation provider (Groq)</b>:
+    <code>https://api.groq.com</code><br />
+    If AI reply generation is used, our backend may send the minimum required content to Groq to produce the response.
+    (The Extension itself does not require direct access to Groq to function.)
   </li>
 </ul>
+
 <p>
-  These services are governed by their own privacy policies. We do not sell your personal data.
+  These services process data only as needed to provide the Extension’s functionality and are governed by their own privacy policies.
+  We do not sell your personal data.
 </p>
 
 <hr />
