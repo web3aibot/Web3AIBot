@@ -15,6 +15,7 @@
     }
     h1 { margin-bottom: 6px; }
     h2 { margin-top: 28px; }
+    h3 { margin-top: 18px; }
     .muted { color: #555; }
     code {
       background: #f3f3f3;
@@ -32,11 +33,11 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="muted">Last updated: 2025-12-13</p>
+<p class="muted">Last updated: 2025-12-22</p>
 
 <p>
   This Privacy Policy explains how <b>Web3 AI Reply</b> (“we”, “our”, “the Extension”)
-  handles information when you use our Chrome extension on
+  collects, uses, stores, and shares information when you use our Chrome extension on
   <b>x.com</b> / <b>twitter.com</b>.
 </p>
 
@@ -44,27 +45,39 @@
 
 <h2>Summary</h2>
 <ul>
-  <li>The Extension processes only the data required to perform user-requested actions.</li>
+  <li>The Extension processes data needed to perform actions you explicitly request (e.g., generate a reply).</li>
   <li>User preferences are stored locally using <code>chrome.storage</code>.</li>
-  <li>Some requests are sent to external APIs (AI and backend services) to provide functionality.</li>
-  <li>We do not sell personal data and do not collect passwords.</li>
+  <li>Some requests may be sent to our backend services and AI provider(s) to deliver functionality.</li>
+  <li>We do not collect your X/Twitter password, do not access your private messages (DMs), and do not sell personal data.</li>
 </ul>
 
 <hr />
 
-<h2>Information we process</h2>
+<h2>Scope & roles</h2>
+<ul>
+  <li><b>Controller / Provider:</b> Web3 AI Reply</li>
+  <li>The Extension operates on X/Twitter pages you visit and runs only when you trigger it.</li>
+</ul>
+
+<hr />
+
+<h2>Information we collect / process</h2>
 
 <h3>1) User-provided content</h3>
 <ul>
-  <li>Tweet URLs you paste or select.</li>
-  <li>Text you approve or submit for AI reply generation.</li>
+  <li>Tweet URLs you paste, select, or submit.</li>
+  <li>Text you submit for AI reply generation (including any prompt/settings you provide).</li>
+  <li>Optional feedback you type into the Extension UI.</li>
 </ul>
 
-<h3>2) Public page context</h3>
+<h3>2) Public page context (X/Twitter)</h3>
 <ul>
-  <li>Publicly visible tweet text and metadata on X/Twitter pages you interact with,
-      only to generate replies or perform actions you explicitly request.</li>
+  <li>Publicly visible tweet text, author handle, and visible metadata needed to generate a reply or perform an action you request.</li>
+  <li>The current page URL and the specific tweet URL you are interacting with.</li>
 </ul>
+<p class="muted">
+  We do not access your private messages (DMs) and do not read content unrelated to your requested action.
+</p>
 
 <h3>3) Local extension storage</h3>
 <ul>
@@ -72,10 +85,17 @@
   <li>Stored locally via <code>chrome.storage</code> to persist behavior across sessions.</li>
 </ul>
 
-<h3>4) Account, credits, and payments (if enabled)</h3>
+<h3>4) Account, authentication, credits (if enabled)</h3>
 <ul>
-  <li>If login is enabled, an email address may be processed to identify your account.</li>
-  <li>If a credits system is used, credit balance and transaction status are stored to provide the service.</li>
+  <li>Email address (to identify your account).</li>
+  <li>Auth/session tokens (to keep you signed in).</li>
+  <li>Credit balance, credit usage, and transaction status (to provide credits-based functionality).</li>
+</ul>
+
+<h3>5) Technical & security data (minimal)</h3>
+<ul>
+  <li>Request timestamps, basic diagnostics (error codes/messages), and extension version.</li>
+  <li>IP address and user-agent may appear in standard server logs for security, rate limiting, and abuse prevention.</li>
 </ul>
 
 <hr />
@@ -83,52 +103,68 @@
 <h2>Information we do NOT collect</h2>
 <ul>
   <li>Your X/Twitter password.</li>
-  <li>Your private messages.</li>
+  <li>Your private messages (DMs).</li>
   <li>Your full browsing history.</li>
   <li>Personal data for advertising or resale.</li>
+  <li>Sensitive personal data unless you explicitly type it into a prompt yourself.</li>
 </ul>
 
 <hr />
 
 <h2>How we use information</h2>
 <ul>
-  <li>To generate AI replies and perform actions you request.</li>
+  <li>To generate AI replies and perform actions you explicitly request.</li>
   <li>To store your preferences and keep the Extension functional.</li>
-  <li>To prevent abuse, ensure stability, and debug errors.</li>
+  <li>To authenticate users and manage credits (if enabled).</li>
+  <li>To prevent abuse, ensure stability, troubleshoot issues, and debug errors.</li>
 </ul>
 
 <hr />
 
-<h2>Third-party services</h2>
+<h2>Permissions & why they are needed</h2>
+<ul>
+  <li><code>storage</code>: to store your settings locally.</li>
+  <li><code>tabs</code>: to identify the active tab URL / tweet URL you are interacting with.</li>
+  <li><code>sidePanel</code>: to display the Extension UI in the Chrome side panel.</li>
+  <li>Host permissions (e.g., <code>*.cloudfunctions.net</code>): to communicate with our backend API endpoints when needed.</li>
+</ul>
+
+<hr />
+
+<h2>Third-party services & sharing</h2>
 <p>
-  Depending on enabled features, the Extension may communicate with:
+  Depending on enabled features, the Extension may communicate with the following parties
+  to deliver functionality. Data is shared only as necessary.
 </p>
 <ul>
-  <li><b>Groq API</b> (<code>https://api.groq.com</code>) for AI text generation.</li>
-  <li><b>Firebase / Google Cloud</b> (<code>*.cloudfunctions.net</code>, <code>*.firebaseapp.com</code>)
-      for backend services such as authentication, credits, and API endpoints.</li>
+  <li>
+    <b>Backend services (Firebase / Google Cloud Functions)</b>
+    (<code>*.cloudfunctions.net</code>, <code>*.firebaseapp.com</code>) for authentication, credits, API routing, and feature logic.
+  </li>
+  <li>
+    <b>AI provider (Groq)</b> (<code>https://api.groq.com</code>) for AI text generation, either directly or via our backend.
+  </li>
 </ul>
 <p>
-  These services process data only as required to deliver the Extension’s functionality
-  and are governed by their own privacy policies.
+  These services are governed by their own privacy policies. We do not sell your personal data.
 </p>
 
 <hr />
 
 <h2>Data retention</h2>
 <ul>
-  <li><b>Local data:</b> Stored on your device until you clear extension data or uninstall.</li>
-  <li><b>Backend data (if applicable):</b> Retained only as long as necessary to provide the service
-      and meet legal or security requirements.</li>
-  <li><b>Logs:</b> Minimal operational logs may be kept temporarily for debugging and abuse prevention.</li>
+  <li><b>Local data:</b> stored on your device until you clear extension data or uninstall.</li>
+  <li><b>Backend data (if applicable):</b> retained as long as needed to provide the service and meet legal or security requirements.</li>
+  <li><b>Credits/transactions (if enabled):</b> retained to maintain service integrity, prevent abuse/fraud, and for legal/accounting obligations where applicable.</li>
+  <li><b>Logs:</b> minimal operational logs may be kept temporarily for debugging, uptime, and abuse prevention, then rotated/deleted as part of normal operations.</li>
 </ul>
 
 <hr />
 
 <h2>Security</h2>
 <p>
-  We use HTTPS and standard security practices to protect data in transit and at rest.
-  While no system is 100% secure, reasonable safeguards are applied.
+  We use HTTPS/TLS and reasonable safeguards to protect data in transit and at rest.
+  While no system is 100% secure, we apply standard measures such as access controls and least-privilege practices.
 </p>
 
 <hr />
@@ -136,9 +172,17 @@
 <h2>Your choices</h2>
 <ul>
   <li>You may uninstall the Extension at any time.</li>
-  <li>You can clear stored settings via browser extension controls.</li>
+  <li>You can clear stored settings via Chrome extension controls.</li>
   <li>You may request deletion of account-related backend data by contacting us.</li>
 </ul>
+
+<hr />
+
+<h2>Children’s privacy</h2>
+<p>
+  The Extension is not intended for children under 13 (or the minimum age required in your country).
+  We do not knowingly collect personal data from children.
+</p>
 
 <hr />
 
@@ -152,8 +196,7 @@
 
 <h2>Changes to this policy</h2>
 <p>
-  This Privacy Policy may be updated from time to time. The “Last updated” date
-  will always reflect the most recent version.
+  This Privacy Policy may be updated from time to time. The “Last updated” date will always reflect the most recent version.
 </p>
 
 </body>
