@@ -33,7 +33,7 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="muted">Last updated: 2025-12-22</p>
+<p class="muted">Last updated: 2025-12-24</p>
 
 <p>
   This Privacy Policy explains how <b>Web3 AI Reply</b> (“we”, “our”, “the Extension”)
@@ -45,10 +45,11 @@
 
 <h2>Summary</h2>
 <ul>
-  <li>The Extension processes data needed to perform actions you explicitly request (e.g., generate a reply).</li>
-  <li>User preferences are stored locally using <code>chrome.storage</code>.</li>
-  <li>When you use features like AI reply generation, requests may be sent to our backend API endpoint to deliver functionality.</li>
+  <li>The Extension operates on X/Twitter pages and provides one-click actions such as generating replies and liking posts.</li>
+  <li>The Extension’s UI uses <code>sidePanel</code>, and preferences are stored locally using <code>chrome.storage</code>.</li>
+  <li>To generate AI replies, your submitted text and required public tweet context are sent to our backend and then to our AI provider (<b>Groq</b>) to generate a response.</li>
   <li>We do not collect your X/Twitter password, do not access your private messages (DMs), and do not sell personal data.</li>
+  <li>Minimal security/operational logs (e.g., timestamps, error codes, IP address, user-agent) may be processed for abuse prevention and reliability.</li>
 </ul>
 
 <hr />
@@ -56,7 +57,7 @@
 <h2>Scope & roles</h2>
 <ul>
   <li><b>Controller / Provider:</b> Web3 AI Reply</li>
-  <li>The Extension operates on X/Twitter pages you visit and runs only when you trigger it.</li>
+  <li>The Extension runs on <b>x.com</b> and <b>twitter.com</b> pages. Content scripts load on matching pages, but features are performed only when you initiate actions in the Extension UI.</li>
 </ul>
 
 <hr />
@@ -72,7 +73,7 @@
 
 <h3>2) Public page context (X/Twitter)</h3>
 <ul>
-  <li>Publicly visible tweet text, author handle, and visible metadata needed to generate a reply or perform an action you request.</li>
+  <li>Publicly visible tweet text, author handle, and visible metadata needed to generate a reply or perform an action you request (e.g., like/reply on a specific tweet).</li>
   <li>The current page URL and the specific tweet URL you are interacting with.</li>
 </ul>
 <p class="muted">
@@ -104,7 +105,7 @@
 <ul>
   <li>Your X/Twitter password.</li>
   <li>Your private messages (DMs).</li>
-  <li>Your full browsing history.</li>
+  <li>Your full browsing history (beyond the active tab URL required to run your requested action).</li>
   <li>Personal data for advertising or resale.</li>
   <li>Sensitive personal data unless you explicitly type it into a prompt yourself.</li>
 </ul>
@@ -113,7 +114,7 @@
 
 <h2>How we use information</h2>
 <ul>
-  <li>To generate AI replies and perform actions you explicitly request.</li>
+  <li>To generate AI replies and perform actions you explicitly request (e.g., prepare a reply, like a tweet).</li>
   <li>To store your preferences and keep the Extension functional.</li>
   <li>To authenticate users and manage credits (if enabled).</li>
   <li>To prevent abuse, ensure stability, troubleshoot issues, and debug errors.</li>
@@ -123,13 +124,22 @@
 
 <h2>Permissions & why they are needed</h2>
 <ul>
-  <li><code>storage</code>: to store your settings and preferences locally using <code>chrome.storage</code>.</li>
-  <li><code>tabs</code>: to read the active tab URL (e.g., the tweet/page you are interacting with) so the Extension can run your requested action on the correct X/Twitter page.</li>
-  <li><code>sidePanel</code>: to display the Extension UI in the Chrome side panel.</li>
+  <li>
+    <code>storage</code>:
+    to store your settings and preferences locally using <code>chrome.storage</code>.
+  </li>
+  <li>
+    <code>sidePanel</code>:
+    to display the Extension UI in the Chrome side panel.
+  </li>
+  <li>
+    <code>tabs</code>:
+    to read the active tab URL (e.g., the tweet/page you are interacting with) so the Extension can run your requested action on the correct X/Twitter page, and to coordinate the side panel UI with the active tab.
+  </li>
   <li>
     <b>Host permission</b>:
     <code>https://us-central1-web3-ai-reply.cloudfunctions.net/api/*</code>
-    — to communicate with our backend API endpoint when needed.
+    — to communicate with our backend API endpoint when needed (e.g., AI reply generation, authentication/credits if enabled).
   </li>
 </ul>
 
@@ -137,23 +147,46 @@
 
 <h2>Third-party services & sharing</h2>
 <p>
-  Depending on enabled features, the Extension may share limited data only as necessary to deliver functionality.
+  We share data <b>only as necessary</b> to provide the features you explicitly request.
+  We do not sell personal data and we do not share data for advertising purposes.
 </p>
 
 <ul>
   <li>
-    <b>Backend API (Google Cloud Functions)</b>:
-    <code>https://us-central1-web3-ai-reply.cloudfunctions.net/api/*</code><br />
+    <b>1) Backend API (Google Cloud / Firebase Cloud Functions)</b><br />
+    Endpoint: <code>https://us-central1-web3-ai-reply.cloudfunctions.net/api/*</code><br />
     We may send the tweet URL, required public tweet context, and your selected settings/prompt to this endpoint
-    to generate replies and provide features such as authentication or credits (if enabled).
+    to generate replies and provide features such as authentication or credits (if enabled).<br />
+    As part of hosting and operating this backend, Google Cloud/Firebase may process data as our infrastructure provider
+    (including operational logging/monitoring).
   </li>
 
-  
+  <li>
+    <b>2) AI Provider (Groq)</b><br />
+    To generate AI replies, our backend forwards the text you submit (prompt/settings) and the minimum required public tweet context to <b>Groq</b> for processing and response generation.
+  </li>
+
+  <li>
+    <b>3) X (Twitter) / x.com</b><br />
+    When you choose to post a reply or like a tweet, those actions occur on the X website in your browser. X receives the submitted reply content and the like action as part of normal platform operation.
+  </li>
+
+  <li>
+    <b>4) Payment processor (only if you sell credits/subscriptions)</b><br />
+    If payments are enabled, we may share necessary billing data with our payment processor to complete transactions. We do not store full payment card details.
+  </li>
 </ul>
 
+<p class="muted">
+  Third-party services process data under their own policies. We only share the minimum data needed to provide the Extension’s functionality.
+</p>
+
+<hr />
+
+<h2>Remote code</h2>
 <p>
-  These services process data only as needed to provide the Extension’s functionality and are governed by their own privacy policies.
-  We do not sell your personal data.
+  The Extension does not download or execute remote JavaScript/Wasm code at runtime. All executable logic is bundled within the Extension package.
+  The Extension communicates with external services only to send user-requested input and receive response data.
 </p>
 
 <hr />
@@ -161,9 +194,20 @@
 <h2>Data retention</h2>
 <ul>
   <li><b>Local data:</b> stored on your device until you clear extension data or uninstall.</li>
-  <li><b>Backend data (if applicable):</b> retained as long as needed to provide the service and meet legal or security requirements.</li>
-  <li><b>Credits/transactions (if enabled):</b> retained to maintain service integrity, prevent abuse/fraud, and for legal/accounting obligations where applicable.</li>
-  <li><b>Logs:</b> minimal operational logs may be kept temporarily for debugging, uptime, and abuse prevention, then rotated/deleted as part of normal operations.</li>
+
+  <li>
+    <b>AI prompts and generated replies:</b> we do <b>not</b> store the prompts you submit or the AI-generated replies in our database. They are processed transiently to fulfill your request.
+  </li>
+
+  <li>
+    <b>Account/credits data (if enabled):</b> retained while your account is active and as needed to provide credits-based functionality.
+    You may request deletion of account-related data, subject to limited retention required for legal, security, or fraud-prevention purposes.
+  </li>
+
+  <li>
+    <b>Logs (security/operations):</b> minimal operational logs (e.g., timestamps, error codes, IP address, user-agent) may be retained for up to <b>30 days</b> for security, abuse prevention, and troubleshooting,
+    then rotated/deleted.
+  </li>
 </ul>
 
 <hr />
