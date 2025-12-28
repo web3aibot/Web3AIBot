@@ -33,7 +33,7 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="muted">Last updated: 2025-12-24</p>
+<p class="muted">Last updated: 2025-12-28</p>
 
 <p>
   This Privacy Policy explains how <b>Web3 AI Reply</b> (“we”, “our”, “the Extension”)
@@ -45,19 +45,19 @@
 
 <h2>Summary</h2>
 <ul>
-  <li>The Extension operates on X/Twitter pages and provides one-click actions such as generating replies and liking posts.</li>
-  <li>The Extension’s UI uses <code>sidePanel</code>, and preferences are stored locally using <code>chrome.storage</code>.</li>
-  <li>To generate AI replies, your submitted text and required public tweet context are sent to our backend and then to our AI provider (<b>Groq</b>) to generate a response.</li>
+  <li>The Extension helps you generate AI-powered reply suggestions and can optionally like public posts on X (Twitter).</li>
+  <li>The Extension runs only when you click and only in the active tab.</li>
+  <li>To generate AI replies, your submitted text and required public tweet context are sent to our backend and then to our AI provider (<b>Groq</b>).</li>
   <li>We do not collect your X/Twitter password, do not access your private messages (DMs), and do not sell personal data.</li>
   <li>Minimal security/operational logs (e.g., timestamps, error codes, IP address, user-agent) may be processed for abuse prevention and reliability.</li>
 </ul>
 
 <hr />
 
-<h2>Scope & roles</h2>
+<h2>Scope &amp; roles</h2>
 <ul>
   <li><b>Controller / Provider:</b> Web3 AI Reply</li>
-  <li>The Extension runs on <b>x.com</b> and <b>twitter.com</b> pages. Content scripts load on matching pages, but features are performed only when you initiate actions in the Extension UI.</li>
+  <li>The Extension operates on <b>x.com</b> / <b>twitter.com</b> only after you initiate an action. Scripts are injected only into the active tab upon user request.</li>
 </ul>
 
 <hr />
@@ -73,7 +73,7 @@
 
 <h3>2) Public page context (X/Twitter)</h3>
 <ul>
-  <li>Publicly visible tweet text, author handle, and visible metadata needed to generate a reply or perform an action you request (e.g., like/reply on a specific tweet).</li>
+  <li>Publicly visible tweet text, author handle, and visible metadata needed to generate a reply or perform a requested action.</li>
   <li>The current page URL and the specific tweet URL you are interacting with.</li>
 </ul>
 <p class="muted">
@@ -93,7 +93,7 @@
   <li>Credit balance, credit usage, and transaction status (to provide credits-based functionality).</li>
 </ul>
 
-<h3>5) Technical & security data (minimal)</h3>
+<h3>5) Technical &amp; security data (minimal)</h3>
 <ul>
   <li>Request timestamps, basic diagnostics (error codes/messages), and extension version.</li>
   <li>IP address and user-agent may appear in standard server logs for security, rate limiting, and abuse prevention.</li>
@@ -122,7 +122,7 @@
 
 <hr />
 
-<h2>Permissions & why they are needed</h2>
+<h2>Permissions &amp; why they are needed</h2>
 <ul>
   <li>
     <code>storage</code>:
@@ -130,22 +130,31 @@
   </li>
   <li>
     <code>sidePanel</code>:
-    to display the Extension UI in the Chrome side panel.
+    to display the Extension UI in the browser side panel.
   </li>
   <li>
-    <code>tabs</code>:
-    to read the active tab URL (e.g., the tweet/page you are interacting with) so the Extension can run your requested action on the correct X/Twitter page, and to coordinate the side panel UI with the active tab.
+    <code>activeTab</code>:
+    to run only on the current tab after you click.
+  </li>
+  <li>
+    <code>scripting</code>:
+    to inject the Extension’s bundled scripts into the active tab after you initiate an action.
   </li>
   <li>
     <b>Host permission</b>:
     <code>https://us-central1-web3-ai-reply.cloudfunctions.net/api/*</code>
-    — to communicate with our backend API endpoint when needed (e.g., AI reply generation, authentication/credits if enabled).
+    — to communicate with our backend API (AI replies, authentication/credits if enabled).
+  </li>
+  <li>
+    <b>Optional host permissions</b>:
+    <code>https://x.com/*</code> and <code>https://twitter.com/*</code>
+    — requested only when you initiate actions on those sites.
   </li>
 </ul>
 
 <hr />
 
-<h2>Third-party services & sharing</h2>
+<h2>Third-party services &amp; sharing</h2>
 <p>
   We share data <b>only as necessary</b> to provide the features you explicitly request.
   We do not sell personal data and we do not share data for advertising purposes.
@@ -185,7 +194,8 @@
 
 <h2>Remote code</h2>
 <p>
-  The Extension does not download or execute remote JavaScript/Wasm code at runtime. All executable logic is bundled within the Extension package.
+  The Extension does not download or execute remote JavaScript/Wasm code at runtime.
+  All executable logic is bundled within the Extension package.
   The Extension communicates with external services only to send user-requested input and receive response data.
 </p>
 
@@ -205,8 +215,7 @@
   </li>
 
   <li>
-    <b>Logs (security/operations):</b> minimal operational logs (e.g., timestamps, error codes, IP address, user-agent) may be retained for up to <b>30 days</b> for security, abuse prevention, and troubleshooting,
-    then rotated/deleted.
+    <b>Logs (security/operations):</b> minimal operational logs (e.g., timestamps, error codes, IP address, user-agent) may be retained for up to <b>30 days</b> for security, abuse prevention, and troubleshooting, then rotated/deleted.
   </li>
 </ul>
 
