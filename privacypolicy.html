@@ -1,1 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Privacy Policy - Web3 AI Reply</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 16px;
+      line-height: 1.65;
+      color: #111;
+    }
+    h1 { margin-bottom: 6px; }
+    h2 { margin-top: 28px; }
+    h3 { margin-top: 18px; }
+    .muted { color: #555; }
+    code {
+      background: #f3f3f3;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+    ul { padding-left: 18px; }
+    hr {
+      border: none;
+      border-top: 1px solid #e6e6e6;
+      margin: 28px 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Privacy Policy</h1>
+<p class="muted">Last updated: 2025-12-28</p>
+
+<p>
+  This Privacy Policy explains how <b>Web3 AI Reply</b> (“we”, “our”, “the Extension”)
+  collects, uses, stores, and shares information when you use our Chrome extension on
+  <b>x.com</b> / <b>twitter.com</b>.
+</p>
+
+<hr />
+
+<h2>Summary</h2>
+<ul>
+  <li>The Extension helps you generate AI-powered reply suggestions and can optionally like public posts on X (Twitter).</li>
+  <li>The Extension runs only when you click and only in the active tab.</li>
+  <li>To generate AI replies, your submitted text and required public tweet context are sent to our backend and then to our AI provider (<b>Groq</b>).</li>
+  <li>We do not collect your X/Twitter password, do not access your private messages (DMs), and do not sell personal data.</li>
+  <li>Minimal security/operational logs (e.g., timestamps, error codes, IP address, user-agent) may be processed for abuse prevention and reliability.</li>
+</ul>
+
+<hr />
+
+<h2>Scope &amp; roles</h2>
+<ul>
+  <li><b>Controller / Provider:</b> Web3 AI Reply</li>
+  <li>The Extension operates on <b>x.com</b> / <b>twitter.com</b> only after you initiate an action. Scripts are injected only into the active tab upon user request.</li>
+</ul>
+
+<hr />
+
+<h2>Information we collect / process</h2>
+
+<h3>1) User-provided content</h3>
+<ul>
+  <li>Tweet URLs you paste, select, or submit.</li>
+  <li>Text you submit for AI reply generation (including any prompt/settings you provide).</li>
+  <li>Optional feedback you type into the Extension UI.</li>
+</ul>
+
+<h3>2) Public page context (X/Twitter)</h3>
+<ul>
+  <li>Publicly visible tweet text, author handle, and visible metadata needed to generate a reply or perform a requested action.</li>
+  <li>The current page URL and the specific tweet URL you are interacting with.</li>
+</ul>
+<p class="muted">
+  We do not access your private messages (DMs) and do not read content unrelated to your requested action.
+</p>
+
+<h3>3) Local extension storage</h3>
+<ul>
+  <li>Settings and preferences you configure in the Extension.</li>
+  <li>Stored locally via <code>chrome.storage</code> to persist behavior across sessions.</li>
+</ul>
+
+<h3>4) Account, authentication, credits (if enabled)</h3>
+<ul>
+  <li>Email address (to identify your account).</li>
+  <li>Auth/session tokens (to keep you signed in).</li>
+  <li>Credit balance, credit usage, and transaction status (to provide credits-based functionality).</li>
+</ul>
+
+<h3>5) Technical &amp; security data (minimal)</h3>
+<ul>
+  <li>Request timestamps, basic diagnostics (error codes/messages), and extension version.</li>
+  <li>IP address and user-agent may appear in standard server logs for security, rate limiting, and abuse prevention.</li>
+</ul>
+
+<hr />
+
+<h2>Information we do NOT collect</h2>
+<ul>
+  <li>Your X/Twitter password.</li>
+  <li>Your private messages (DMs).</li>
+  <li>Your full browsing history (beyond the active tab URL required to run your requested action).</li>
+  <li>Personal data for advertising or resale.</li>
+  <li>Sensitive personal data unless you explicitly type it into a prompt yourself.</li>
+</ul>
+
+<hr />
+
+<h2>How we use information</h2>
+<ul>
+  <li>To generate AI replies and perform actions you explicitly request (e.g., prepare a reply, like a tweet).</li>
+  <li>To store your preferences and keep the Extension functional.</li>
+  <li>To authenticate users and manage credits (if enabled).</li>
+  <li>To prevent abuse, ensure stability, troubleshoot issues, and debug errors.</li>
+</ul>
+
+<hr />
+
+<h2>Permissions &amp; why they are needed</h2>
+<ul>
+  <li>
+    <code>storage</code>:
+    to store your settings and preferences locally using <code>chrome.storage</code>.
+  </li>
+  <li>
+    <code>sidePanel</code>:
+    to display the Extension UI in the browser side panel.
+  </li>
+  <li>
+    <code>activeTab</code>:
+    to run only on the current tab after you click.
+  </li>
+  <li>
+    <code>scripting</code>:
+    to inject the Extension’s bundled scripts into the active tab after you initiate an action.
+  </li>
+  <li>
+    <b>Host permission</b>:
+    <code>https://us-central1-web3-ai-reply.cloudfunctions.net/api/*</code>
+    — to communicate with our backend API (AI replies, authentication/credits if enabled).
+  </li>
+  <li>
+    <b>Optional host permissions</b>:
+    <code>https://x.com/*</code> and <code>https://twitter.com/*</code>
+    — requested only when you initiate actions on those sites.
+  </li>
+</ul>
+
+<hr />
+
+<h2>Third-party services &amp; sharing</h2>
+<p>
+  We share data <b>only as necessary</b> to provide the features you explicitly request.
+  We do not sell personal data and we do not share data for advertising purposes.
+</p>
+
+<ul>
+  <li>
+    <b>1) Backend API (Google Cloud / Firebase Cloud Functions)</b><br />
+    Endpoint: <code>https://us-central1-web3-ai-reply.cloudfunctions.net/api/*</code><br />
+    We may send the tweet URL, required public tweet context, and your selected settings/prompt to this endpoint
+    to generate replies and provide features such as authentication or credits (if enabled).<br />
+    As part of hosting and operating this backend, Google Cloud/Firebase may process data as our infrastructure provider
+    (including operational logging/monitoring).
+  </li>
+
+  <li>
+    <b>2) AI Provider (Groq)</b><br />
+    To generate AI replies, our backend forwards the text you submit (prompt/settings) and the minimum required public tweet context to <b>Groq</b> for processing and response generation.
+  </li>
+
+  <li>
+    <b>3) X (Twitter) / x.com</b><br />
+    When you choose to post a reply or like a tweet, those actions occur on the X website in your browser. X receives the submitted reply content and the like action as part of normal platform operation.
+  </li>
+
+  <li>
+    <b>4) Payment processor (only if you sell credits/subscriptions)</b><br />
+    If payments are enabled, we may share necessary billing data with our payment processor to complete transactions. We do not store full payment card details.
+  </li>
+</ul>
+
+<p class="muted">
+  Third-party services process data under their own policies. We only share the minimum data needed to provide the Extension’s functionality.
+</p>
+
+<hr />
+
+<h2>Remote code</h2>
+<p>
+  The Extension does not download or execute remote JavaScript/Wasm code at runtime.
+  All executable logic is bundled within the Extension package.
+  The Extension communicates with external services only to send user-requested input and receive response data.
+</p>
+
+<hr />
+
+<h2>Data retention</h2>
+<ul>
+  <li><b>Local data:</b> stored on your device until you clear extension data or uninstall.</li>
+
+  <li>
+    <b>AI prompts and generated replies:</b> we do <b>not</b> store the prompts you submit or the AI-generated replies in our database. They are processed transiently to fulfill your request.
+  </li>
+
+  <li>
+    <b>Account/credits data (if enabled):</b> retained while your account is active and as needed to provide credits-based functionality.
+    You may request deletion of account-related data, subject to limited retention required for legal, security, or fraud-prevention purposes.
+  </li>
+
+  <li>
+    <b>Logs (security/operations):</b> minimal operational logs (e.g., timestamps, error codes, IP address, user-agent) may be retained for up to <b>30 days</b> for security, abuse prevention, and troubleshooting, then rotated/deleted.
+  </li>
+</ul>
+
+<hr />
+
+<h2>Security</h2>
+<p>
+  We use HTTPS/TLS and reasonable safeguards to protect data in transit and at rest.
+  While no system is 100% secure, we apply standard measures such as access controls and least-privilege practices.
+</p>
+
+<hr />
+
+<h2>Your choices</h2>
+<ul>
+  <li>You may uninstall the Extension at any time.</li>
+  <li>You can clear stored settings via Chrome extension controls.</li>
+  <li>You may request deletion of account-related backend data by contacting us.</li>
+</ul>
+
+<hr />
+
+<h2>Children’s privacy</h2>
+<p>
+  The Extension is not intended for children under 13 (or the minimum age required in your country).
+  We do not knowingly collect personal data from children.
+</p>
+
+<hr />
+
+<h2>Contact</h2>
+<ul>
+  <li>Email: <a href="mailto:web3aibot@gmail.com">web3aibot@gmail.com</a></li>
+  <li>Website: <a href="https://web3aibot.github.io/Web3AIBot/">https://web3aibot.github.io/Web3AIBot/</a></li>
+</ul>
+
+<hr />
+
+<h2>Changes to this policy</h2>
+<p>
+  This Privacy Policy may be updated from time to time. The “Last updated” date will always reflect the most recent version.
+</p>
+
+</body>
+</html>
 
