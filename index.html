@@ -1,263 +1,889 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Privacy Policy - Web3 AI Reply</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      max-width: 960px;
-      margin: 40px auto;
-      padding: 0 16px;
-      line-height: 1.65;
-      color: #111;
-    }
-    h1 { margin-bottom: 6px; }
-    h2 { margin-top: 28px; }
-    h3 { margin-top: 18px; }
-    .muted { color: #555; }
-    code {
-      background: #f3f3f3;
-      padding: 2px 6px;
-      border-radius: 6px;
-    }
-    ul { padding-left: 18px; }
-    hr {
-      border: none;
-      border-top: 1px solid #e6e6e6;
-      margin: 28px 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 AI Reply Assistant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #0f172a;
+            overflow-x: hidden;
+            background: #ffffff;
+        }
+
+        :root {
+            --h2-gradient: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #4facfe);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { filter: drop-shadow(0 0 0 rgba(255,255,255,0)); }
+            50% { filter: drop-shadow(0 0 18px rgba(255,255,255,0.45)); }
+        }
+
+        .hero {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            padding: 100px 20px 110px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 70%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 30%;
+            right: 10%;
+            animation-delay: 4s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+            letter-spacing: -2px;
+        }
+
+        .hero-logo {
+            width: 80px;
+            height: auto;
+            margin: 0 auto 18px;
+            display: block;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));
+            opacity: 0.7;
+            animation: fadeInUp 1s ease-out, logoFloat 6s ease-in-out infinite, logoGlow 3s ease-in-out infinite;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+            font-weight: 300;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 36px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 36px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            color: #667eea;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .chrome-icon {
+            width:32px;
+            height: 32px;
+        }
+
+        .what-it-does {
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+            text-align: center;
+        }
+
+        .what-it-does h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 16px;
+            color: #0f172a;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .what-it-does-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 38px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(100, 116, 139, 0.1);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.5s;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            display: block;
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .privacy-section {
+            padding: 80px 20px;
+            background: white;
+            position: relative;
+            text-align: center;
+        }
+
+        .privacy-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.03) 100%);
+        }
+
+        .privacy-section h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 16px;
+            color: #0f172a;
+            font-weight: 800;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .privacy-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .privacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .privacy-item {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            border: 1px solid rgba(100, 116, 139, 0.1);
+            text-align: center;
+        }
+
+        .privacy-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+        }
+
+        .privacy-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            display: block;
+            text-align: center;
+        }
+
+        .privacy-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .privacy-item p {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .target-audience {
+            padding: 70px 20px;
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+            text-align: center;
+        }
+
+        .target-audience h2 {
+            font-size: 3rem;
+            margin-bottom: 36px;
+            color: #0f172a;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .audience-card {
+            background: white;
+            padding: 34px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+        }
+
+        .audience-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .audience-icon {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+        }
+
+        .audience-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .audience-card p {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .how-it-works {
+            padding: 80px 20px;
+            background: white;
+            position: relative;
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 16px;
+            color: #0f172a;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .how-it-works-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 34px;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            border-radius: 20px;
+            transition: all 0.4s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 2px solid rgba(100, 116, 139, 0.1);
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+            border-color: #667eea;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            line-height: 80px;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            transition: all 0.4s;
+        }
+
+        .step:hover .step-number {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        .step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .step p {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .stats {
+            padding: 70px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 L61 40 L98 40 L68 61 L79 95 L50 75 L21 95 L32 61 L2 40 L39 40 Z" fill="%23ffffff" fill-opacity="0.03"/></svg>') repeat;
+            animation: float 20s linear infinite;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 35px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            justify-items: center;
+        }
+
+        .stat-item {
+            animation: scaleIn 0.6s ease-out backwards;
+            text-align: center;
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 0.1s; }
+        .stat-item:nth-child(2) { animation-delay: 0.2s; }
+        .stat-item:nth-child(3) { animation-delay: 0.3s; }
+
+        .stat-item h3 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .stat-item p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .cta-section {
+            padding: 90px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 18px;
+            color: #0f172a;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .what-it-does h2,
+        .privacy-section h2,
+        .target-audience h2,
+        .how-it-works h2,
+        .cta-section h2 {
+            background: var(--h2-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            color: #64748b;
+            margin-bottom: 36px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        footer a {
+            color: #a78bfa;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            color: #c4b5fd;
+            text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 1.05rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            width: 6px;
+            height: 10px;
+            background: white;
+            border-radius: 3px;
+            transform: translateX(-50%);
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                top: 10px;
+                opacity: 1;
+            }
+            100% {
+                top: 30px;
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: -1px;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .what-it-does h2, .privacy-section h2, .target-audience h2, .how-it-works h2, .cta-section h2 {
+                font-size: 2.2rem;
+            }
+
+            .features-grid, .privacy-grid, .steps, .audience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <section class="hero">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="container">
+            <img src="icon.png" alt="Web3 AI Reply Assistant logo" class="hero-logo">
+            <h1>Twitter - X Engagement Web3 AI Reply Assistant</h1>
+            <p class="hero-subtitle">AI replies and likes on X/Twitter in one click</p>
+            <a href="https://chromewebstore.google.com/detail/web3-ai-reply/fjenkbpkneihhidjbaoolbcegmgcfdkn" class="cta-button" target="_blank">
+                <img src="icon.png" alt="Web3 AI Reply Assistant logo" class="chrome-icon">
+                Add to Chrome - It's Free
+            </a>
+        </div>
+       
+    </section>
+    <section class="how-it-works">
+        <div class="container">
+            <h2>Get started in seconds</h2>
+            <p class="how-it-works-subtitle">Get started in seconds with our simple 4-step process</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Open a Tweet</h3>
+                    <p>Navigate to any tweet on X (Twitter) that you want to engage with</p>
+                </div>
 
-<h1>Privacy Policy</h1>
-<p class="muted">Last updated: 2025-12-28</p>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Enable the Buttons</h3>
+                    <p>Activate the AI assistant buttons with a simple click</p>
+                </div>
 
-<p>
-  This Privacy Policy explains how <b>Web3 AI Reply</b> (“we”, “our”, “the Extension”)
-  collects, uses, stores, and shares information when you use our Chrome extension on
-  <b>x.com</b> / <b>twitter.com</b>.
-</p>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Auto-Like + AI Reply</h3>
+                    <p>Get instant AI-generated reply and auto-like in one powerful click</p>
+                </div>
 
-<hr />
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Process Multiple Tweets</h3>
+                    <p>Optionally process multiple tweet links one by one efficiently</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="what-it-does">
+        <div class="container">
+            <h2>What it does?</h2>
+            <p class="what-it-does-subtitle">The extension helps users draft natural, context-aware reply suggestions for tweets and comments. All actions are performed only when explicitly initiated by the user, ensuring full control over every interaction.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Natural, Context-Aware Replies</h3>
+                    <p>The AI analyzes the selected tweet to generate human-like reply suggestions that perfectly match the conversation flow.</p>
+                </div>
 
-<h2>Summary</h2>
-<ul>
-  <li>The Extension helps you generate AI-powered reply suggestions and can optionally like public posts on X (Twitter).</li>
-  <li>The Extension runs only when you click and only in the active tab.</li>
-  <li>To generate AI replies, your submitted text and required public tweet context are sent to our backend and then to our AI provider (<b>Groq</b>).</li>
-  <li>We do not collect your X/Twitter password, do not access your private messages (DMs), and do not sell personal data.</li>
-  <li>Minimal security/operational logs (e.g., timestamps, error codes, IP address, user-agent) may be processed for abuse prevention and reliability.</li>
-</ul>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Faster Engagement</h3>
+                    <p>Create reply drafts instantly and focus on meaningful conversations without wasting time.</p>
+                </div>
 
-<hr />
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Multilingual Support</h3>
+                    <p>Draft replies in multiple languages to engage with a global audience naturally and effectively.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="target-audience">
+        <div class="container">
+            <h2>Who is it for?</h2>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <div class="audience-icon">👥</div>
+                    <h3>Everyone on X</h3>
+                    <p>Anyone who wants faster, more consistent engagement on X (Twitter)</p>
+                </div>
 
-<h2>Scope &amp; roles</h2>
-<ul>
-  <li><b>Controller / Provider:</b> Web3 AI Reply</li>
-  <li>The Extension operates on <b>x.com</b> / <b>twitter.com</b> only after you initiate an action. Scripts are injected only into the active tab upon user request.</li>
-</ul>
+                <div class="audience-card">
+                    <div class="audience-icon">🎨</div>
+                    <h3>Creators</h3>
+                    <p>Content creators managing daily interactions with their growing audience</p>
+                </div>
 
-<hr />
+                <div class="audience-card">
+                    <div class="audience-icon">💼</div>
+                    <h3>Community Managers & Professionals</h3>
+                    <p>Professionals managing frequent replies and maintaining consistent communication</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="privacy-section">
+        <div class="container">
+            <h2>Privacy & Security First</h2>
+            <p class="privacy-subtitle">Your privacy is our top priority. We've built this extension with security and transparency at its core.</p>
+            <div class="privacy-grid">
+                <div class="privacy-item">
+                    <span class="privacy-icon">👆</span>
+                    <h3>Actions Run Only When You Click</h3>
+                    <p>No automatic actions - everything happens only when you explicitly initiate it.</p>
+                </div>
 
-<h2>Information we collect / process</h2>
+                <div class="privacy-item">
+                    <span class="privacy-icon">📑</span>
+                    <h3>Works in Active Tab Only</h3>
+                    <p>The extension operates exclusively in your current tab for maximum security.</p>
+                </div>
 
-<h3>1) User-provided content</h3>
-<ul>
-  <li>Tweet URLs you paste, select, or submit.</li>
-  <li>Text you submit for AI reply generation (including any prompt/settings you provide).</li>
-  <li>Optional feedback you type into the Extension UI.</li>
-</ul>
+                <div class="privacy-item">
+                    <span class="privacy-icon">🔒</span>
+                    <h3>Tweet Content Processing</h3>
+                    <p>Tweet content is processed to generate replies with no background activity whatsoever.</p>
+                </div>
 
-<h3>2) Public page context (X/Twitter)</h3>
-<ul>
-  <li>Publicly visible tweet text, author handle, and visible metadata needed to generate a reply or perform a requested action.</li>
-  <li>The current page URL and the specific tweet URL you are interacting with.</li>
-</ul>
-<p class="muted">
-  We do not access your private messages (DMs) and do not read content unrelated to your requested action.
-</p>
+               
+            </div>
+        </div>
+    </section>
 
-<h3>3) Local extension storage</h3>
-<ul>
-  <li>Settings and preferences you configure in the Extension.</li>
-  <li>Stored locally via <code>chrome.storage</code> to persist behavior across sessions.</li>
-</ul>
 
-<h3>4) Account, authentication, credits (if enabled)</h3>
-<ul>
-  <li>Email address (to identify your account).</li>
-  <li>Auth/session tokens (to keep you signed in).</li>
-  <li>Credit balance, credit usage, and transaction status (to provide credits-based functionality).</li>
-</ul>
 
-<h3>5) Technical &amp; security data (minimal)</h3>
-<ul>
-  <li>Request timestamps, basic diagnostics (error codes/messages), and extension version.</li>
-  <li>IP address and user-agent may appear in standard server logs for security, rate limiting, and abuse prevention.</li>
-</ul>
 
-<hr />
 
-<h2>Information we do NOT collect</h2>
-<ul>
-  <li>Your X/Twitter password.</li>
-  <li>Your private messages (DMs).</li>
-  <li>Your full browsing history (beyond the active tab URL required to run your requested action).</li>
-  <li>Personal data for advertising or resale.</li>
-  <li>Sensitive personal data unless you explicitly type it into a prompt yourself.</li>
-</ul>
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>⭐ 5.0</h3>
+                    <p>Perfect User Rating</p>
+                </div>
+                <div class="stat-item">
+                    <h3>🚀 Instant</h3>
+                    <p>Real-Time Responses</p>
+                </div>
+                <div class="stat-item">
+                    <h3>🔒 100%</h3>
+                    <p>Privacy Protected</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<hr />
+     <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your X Engagement?</h2>
+            <p>Join users who are already engaging smarter with AI-powered replies and watch your audience grow</p>
+            <a href="https://chromewebstore.google.com/detail/web3-ai-reply/fjenkbpkneihhidjbaoolbcegmgcfdkn" class="cta-button" target="_blank">
+                <svg class="chrome-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.21 0 0 5.21 0 12s5.21 12 12 12 12-5.21 12-12S18.79 0 12 0zM1.5 12C1.5 6.21 6.21 1.5 12 1.5c2.91 0 5.51 1.2 7.38 3.12L15 12l-3 5.18L8.82 12H1.5zm18.38 7.38C18.01 21.3 15.41 22.5 12 22.5c-2.91 0-5.51-1.2-7.38-3.12L9 12l3-5.18L15.18 12h6.32c-.09 3.15-1.38 6-3.62 7.38z"/>
+                </svg>
+                Get Started Now - Free Forever
+            </a>
+        </div>
+    </section>
 
-<h2>How we use information</h2>
-<ul>
-  <li>To generate AI replies and perform actions you explicitly request (e.g., prepare a reply, like a tweet).</li>
-  <li>To store your preferences and keep the Extension functional.</li>
-  <li>To authenticate users and manage credits (if enabled).</li>
-  <li>To prevent abuse, ensure stability, troubleshoot issues, and debug errors.</li>
-</ul>
-
-<hr />
-
-<h2>Permissions &amp; why they are needed</h2>
-<ul>
-  <li>
-    <code>storage</code>:
-    to store your settings and preferences locally using <code>chrome.storage</code>.
-  </li>
-  <li>
-    <code>sidePanel</code>:
-    to display the Extension UI in the browser side panel.
-  </li>
-  <li>
-    <code>activeTab</code>:
-    to run only on the current tab after you click.
-  </li>
-  <li>
-    <code>scripting</code>:
-    to inject the Extension’s bundled scripts into the active tab after you initiate an action.
-  </li>
-  <li>
-    <b>Host permission</b>:
-    <code>https://us-central1-web3-ai-reply.cloudfunctions.net/api/*</code>
-    — to communicate with our backend API (AI replies, authentication/credits if enabled).
-  </li>
-  <li>
-    <b>Optional host permissions</b>:
-    <code>https://x.com/*</code> and <code>https://twitter.com/*</code>
-    — requested only when you initiate actions on those sites.
-  </li>
-</ul>
-
-<hr />
-
-<h2>Third-party services &amp; sharing</h2>
-<p>
-  We share data <b>only as necessary</b> to provide the features you explicitly request.
-  We do not sell personal data and we do not share data for advertising purposes.
-</p>
-
-<ul>
-  <li>
-    <b>1) Backend API (Google Cloud / Firebase Cloud Functions)</b><br />
-    Endpoint: <code>https://us-central1-web3-ai-reply.cloudfunctions.net/api/*</code><br />
-    We may send the tweet URL, required public tweet context, and your selected settings/prompt to this endpoint
-    to generate replies and provide features such as authentication or credits (if enabled).<br />
-    As part of hosting and operating this backend, Google Cloud/Firebase may process data as our infrastructure provider
-    (including operational logging/monitoring).
-  </li>
-
-  <li>
-    <b>2) AI Provider (Groq)</b><br />
-    To generate AI replies, our backend forwards the text you submit (prompt/settings) and the minimum required public tweet context to <b>Groq</b> for processing and response generation.
-  </li>
-
-  <li>
-    <b>3) X (Twitter) / x.com</b><br />
-    When you choose to post a reply or like a tweet, those actions occur on the X website in your browser. X receives the submitted reply content and the like action as part of normal platform operation.
-  </li>
-
-  <li>
-    <b>4) Payment processor (only if you sell credits/subscriptions)</b><br />
-    If payments are enabled, we may share necessary billing data with our payment processor to complete transactions. We do not store full payment card details.
-  </li>
-</ul>
-
-<p class="muted">
-  Third-party services process data under their own policies. We only share the minimum data needed to provide the Extension’s functionality.
-</p>
-
-<hr />
-
-<h2>Remote code</h2>
-<p>
-  The Extension does not download or execute remote JavaScript/Wasm code at runtime.
-  All executable logic is bundled within the Extension package.
-  The Extension communicates with external services only to send user-requested input and receive response data.
-</p>
-
-<hr />
-
-<h2>Data retention</h2>
-<ul>
-  <li><b>Local data:</b> stored on your device until you clear extension data or uninstall.</li>
-
-  <li>
-    <b>AI prompts and generated replies:</b> we do <b>not</b> store the prompts you submit or the AI-generated replies in our database. They are processed transiently to fulfill your request.
-  </li>
-
-  <li>
-    <b>Account/credits data (if enabled):</b> retained while your account is active and as needed to provide credits-based functionality.
-    You may request deletion of account-related data, subject to limited retention required for legal, security, or fraud-prevention purposes.
-  </li>
-
-  <li>
-    <b>Logs (security/operations):</b> minimal operational logs (e.g., timestamps, error codes, IP address, user-agent) may be retained for up to <b>30 days</b> for security, abuse prevention, and troubleshooting, then rotated/deleted.
-  </li>
-</ul>
-
-<hr />
-
-<h2>Security</h2>
-<p>
-  We use HTTPS/TLS and reasonable safeguards to protect data in transit and at rest.
-  While no system is 100% secure, we apply standard measures such as access controls and least-privilege practices.
-</p>
-
-<hr />
-
-<h2>Your choices</h2>
-<ul>
-  <li>You may uninstall the Extension at any time.</li>
-  <li>You can clear stored settings via Chrome extension controls.</li>
-  <li>You may request deletion of account-related backend data by contacting us.</li>
-</ul>
-
-<hr />
-
-<h2>Children’s privacy</h2>
-<p>
-  The Extension is not intended for children under 13 (or the minimum age required in your country).
-  We do not knowingly collect personal data from children.
-</p>
-
-<hr />
-
-<h2>Contact</h2>
-<ul>
-  <li>Email: <a href="mailto:web3aibot@gmail.com">web3aibot@gmail.com</a></li>
-  <li>Website: <a href="https://web3aibot.github.io/Web3AIBot/">https://web3aibot.github.io/Web3AIBot/</a></li>
-</ul>
-
-<hr />
-
-<h2>Changes to this policy</h2>
-<p>
-  This Privacy Policy may be updated from time to time. The “Last updated” date will always reflect the most recent version.
-</p>
-
-</body>
-</html>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Web3 AI Reply. All rights reserved.</p>
+            <p style="margin-top: 15px; font-size: 0.95rem;">
+                <a href="https://web3aibot.github.io/Web3AIBot/" target="_blank">Privacy Policy</a>  |  
+                <a href="mailto:web3aibot@gmail.com">Contact Us</a>
+            </p>
+        </div>
+    </footer>
