@@ -33,7 +33,7 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="muted">Last updated: 2025-12-28</p>
+<p class="muted">Last updated: 2026-01-16</p>
 
 <p>
   This Privacy Policy explains how <b>Web3 AI Reply</b> (“we”, “our”, “the Extension”)
@@ -45,9 +45,10 @@
 
 <h2>Summary</h2>
 <ul>
-  <li>The Extension helps you generate AI-powered reply suggestions and can optionally like public posts on X (Twitter).</li>
+  <li>The Extension helps you generate AI-powered reply suggestions and may like or send replies depending on the selected mode.</li>
+  <li>Compliant Mode requires manual send; Automation Mode can auto-like and auto-send replies.</li>
   <li>The Extension runs only when you click and only in the active tab.</li>
-  <li>To generate AI replies, your submitted text and required public tweet context are sent to our backend and then to our AI provider (<b>Groq</b>).</li>
+  <li>To generate AI replies, your submitted text and required public tweet context are sent to our backend and then to our AI provider.</li>
   <li>We do not collect your X/Twitter password, do not access your private messages (DMs), and do not sell personal data.</li>
   <li>Minimal security/operational logs (e.g., timestamps, error codes, IP address, user-agent) may be processed for abuse prevention and reliability.</li>
 </ul>
@@ -83,6 +84,7 @@
 <h3>3) Local extension storage</h3>
 <ul>
   <li>Settings and preferences you configure in the Extension.</li>
+  <li>Selected operation mode (Compliant / Automation).</li>
   <li>Stored locally via <code>chrome.storage</code> to persist behavior across sessions.</li>
 </ul>
 
@@ -171,8 +173,8 @@
   </li>
 
   <li>
-    <b>2) AI Provider (Groq)</b><br />
-    To generate AI replies, our backend forwards the text you submit (prompt/settings) and the minimum required public tweet context to <b>Groq</b> for processing and response generation.
+    <b>2) AI Provider (third-party)</b><br />
+    To generate AI replies, our backend forwards the text you submit (prompt/settings) and the minimum required public tweet context to an AI provider for processing and response generation.
   </li>
 
   <li>
@@ -261,4 +263,3 @@
 
 </body>
 </html>
-
