@@ -1,1 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Privacy Policy - Sorsa-TwitterScout Point</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 16px;
+      line-height: 1.65;
+      color: #111;
+    }
+
+    h1 { margin-bottom: 6px; }
+    h2 { margin-top: 28px; }
+    h3 { margin-top: 18px; }
+    .muted { color: #555; }
+    code { background: #f3f3f3; padding: 2px 6px; border-radius: 6px; }
+    ul { padding-left: 18px; }
+    hr { border: none; border-top: 1px solid #e6e6e6; margin: 28px 0; }
+  </style>
+</head>
+
+<body>
+
+  <h1>Privacy Policy</h1>
+  <p class="muted">Last updated: 2024-02-23</p>
+
+  <p>
+    This Privacy Policy explains how <b>Sorsa-TwitterScout Point</b> (“we”, “our”, “the Tool”)
+    collects, uses, stores, and shares information when you use our Chrome extension on
+    <b>x.com</b> / <b>twitter.com</b>.
+  </p>
+
+  <hr />
+
+  <h2>Summary</h2>
+  <ul>
+    <li>The Extension helps you view Sorsa scores, TwitterScore points, and analyze follower lists on X (Twitter).</li>
+    <li>The Extension runs only when you grant access and primarily interacts with the active tab.</li>
+    <li>To display scores, the extension fetches public profile data and communicates with our backend.</li>
+    <li>We do not collect your X/Twitter password, do not access your private messages (DMs), and do not sell your personal data.</li>
+    <li>Minimal diagnostic data (e.g., timestamps, error codes) may be processed for reliability and security.</li>
+  </ul>
+
+  <hr />
+
+  <h2>Information we collect / process</h2>
+
+  <h3>1) User-provided content</h3>
+  <ul>
+    <li>Settings and score thresholds you configure in the Extension's popup.</li>
+    <li>Search queries or handles you explicitly type into the tools section.</li>
+  </ul>
+
+  <h3>2) Public page context (X/Twitter)</h3>
+  <ul>
+    <li>Publicly visible handles (usernames), follower counts, and following counts encountered on X/Twitter to display relevant scores.</li>
+    <li>Public tags and metadata associated with profiles (specifically from Sorsa.io).</li>
+  </ul>
+  <p class="muted">
+    We do not access your private messages (DMs) or any non-public account information.
+  </p>
+
+  <h3>3) Local extension storage</h3>
+  <ul>
+    <li>Your preferred color ranges, display settings, and authentication tokens are stored locally via <code>chrome.storage</code>.</li>
+  </ul>
+
+  <h3>4) Account & Authentication</h3>
+  <ul>
+    <li>Email address (used solely to identify your account and trial status).</li>
+    <li>Auth/session tokens (to manage your login session securely).</li>
+    <li>Access duration and credit status (to provide premium features).</li>
+  </ul>
+
+  <hr />
+
+  <h2>Permissions & Why they are needed</h2>
+  <ul>
+    <li>
+      <code>storage</code>: To save your configuration and login session locally.
+    </li>
+    <li>
+      <code>activeTab</code>: To interact with the specific Twitter page you are currently viewing.
+    </li>
+    <li>
+      <code>scripting</code>: To securely inject the UI elements (badges) into the page.
+    </li>
+    <li>
+      <b>Host Permission</b>:
+      <code>https://us-central1-point-5f8e2.cloudfunctions.net/*</code>
+      — To communicate with our secure backend for authentication and settings sync.
+    </li>
+    <li>
+      <b>Optional Host Permissions</b>:
+      <code>*://*.twitter.com/*</code>, <code>*://*.x.com/*</code>, <code>https://app.sorsa.io/*</code>, and <code>https://twitterscore.io/*</code>
+      — Requested only when needed to fetch and display scores on those platforms.
+    </li>
+  </ul>
+
+  <hr />
+
+  <h2>Third-party services & Sharing</h2>
+  <p>
+    We share data <b>only as necessary</b> to provide the features of the Extension. We do not sell data to advertisers.
+  </p>
+
+  <ul>
+    <li>
+      <b>Backend API (Google Cloud / Firebase)</b><br />
+      Used for authentication, managing trial/premium access, and syncing your color preferences.
+    </li>
+    <li>
+      <b>Data Providers (Sorsa.io & TwitterScore.io)</b><br />
+      The extension fetches publicly available scores from these platforms to display them to you. No private account data is shared with them by the Extension.
+    </li>
+  </ul>
+
+  <hr />
+
+  <h2>Data retention</h2>
+  <ul>
+    <li><b>Local data:</b> Stored on your device until you clear extension data or uninstall.</li>
+    <li><b>Account data:</b> Retained only as long as your account is active to manage your subscription.</li>
+    <li><b>Logs:</b> Minimal operational logs for troubleshooting are rotated/deleted every 30 days.</li>
+  </ul>
+
+  <hr />
+
+  <h2>Contact</h2>
+  <p>For any questions regarding this policy, you can contact us at:</p>
+  <ul>
+    <li>Email: <a href="mailto:support@sorsa-point.example">support@sorsa-point.example</a></li>
+  </ul>
+
+</body>
+</html>
+
 
